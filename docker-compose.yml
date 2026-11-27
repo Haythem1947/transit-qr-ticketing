@@ -35,12 +35,17 @@ services:
       mysql:
         condition: service_healthy
 
+  
   validation-service:
     build: ./services/validation-service
     container_name: transit-validation-service
     restart: unless-stopped
     ports:
-      - "8001:8001"
+      - "8001:8000"
+    environment:
+      - TICKET_SERVICE_URL=http://ticket-service:8000
+    depends_on:
+      - ticket-service
 
 volumes:
   mysqldata:
