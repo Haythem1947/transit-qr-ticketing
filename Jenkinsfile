@@ -2,12 +2,12 @@ pipeline {
   agent any
 
   triggers {
-    pollSCM('H/2 * * * *')      // checks GitHub every 2 minutes: a push to main starts a build
+    pollSCM('H/2 * * * *')
   }
 
   environment {
-    DOCKERHUB_USER = 'CHANGE_ME'                  // M4: put the real Docker Hub username here
-    IMAGE_TAG      = "1.0.${BUILD_NUMBER}"        // every build gets a new version number
+    DOCKERHUB_USER = 'boodaci'
+    IMAGE_TAG      = "1.0.${BUILD_NUMBER}"
   }
 
   stages {
